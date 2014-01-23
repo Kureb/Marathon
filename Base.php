@@ -5,7 +5,7 @@
   * BOULANGER Vincent & DAUSSY Alexandre
   */
 include_once 'param_co.php';
-class Base{
+class base{
 
 
 	private static $connection;

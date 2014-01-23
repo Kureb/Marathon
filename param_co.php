@@ -1,6 +1,6 @@
 <?php
 
-	$base = 'blog';
+	$base = 'daussy2u';
 	$pass = 'root';
 	$user = 'root';
 	$host = 'localhost';
