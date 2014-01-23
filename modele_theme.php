@@ -137,6 +137,19 @@ class modele_theme {
       return $tab;
     }
 
+    public static function nbResto($theme)
+{
+      $c = base::getConnection();
+      $query = $c->prepare('SELECT count(nom) as nbresto FROM restaurant WHERE id_theme=?');
+      $query->bindParam(1, $theme, PDO::PARAM_INT);
+
+      $dbres = $query->execute();
+
+      $d = $query->fetch(PDO::FETCH_BOTH);
+
+      return $d['nbresto'];
+}
+
 	
 }
 

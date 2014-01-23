@@ -12,6 +12,10 @@ class themeController extends Controller{
   		foreach (modele_theme::findAll() as $theme) {
         $liste=modele_theme::findAllImage($theme->id);
         $nb = rand(0,sizeof($liste)-1);
+      $idtheme = $theme->__get('id');
+      $nbresto = modele_theme::nbResto($idtheme);
+      $pluriel = "";
+      if($nbresto>1){ $pluriel = "s"; }
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -19,7 +23,7 @@ class themeController extends Controller{
       	<div class="caption">
         <h3>'.$theme->__get('nom').'</h3>
         <p>'.$theme->__get('description').'</p>
-        <p><a href="theme.php?a=detail&theme='.$theme->__get('nom').'" class="btn btn-primary" role="button">Liste des restaurants</a></p>
+        <p><a href="theme.php?a=detail&theme='.$theme->__get('nom').'" class="btn btn-primary" role="button">'.$nbresto.' restaurant'.$pluriel.'</a></p>
      	 </div>
     	</div>
       </div>';
