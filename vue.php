@@ -14,14 +14,22 @@
 					<link rel=\"stylesheet\" href=\"bootstrap/css/bootstrap.css\" type=\"text/css\"/>
 	 				<link rel=\"stylesheet\" href=\"design.css\" type=\"text/css\" /> 
 	 				<script type=\"text/javascript\" src=\"bootstrap/js/bootstrap-select.js\"></script>
-	 				<script type=\"text/javascript\" src=\"bootstrap/js/bootstrap.js\"></script>
+	 				
 				</head>
 
 				<body>
 					<header>
 						<div class=\"page-header\">
 						  <h1>Dé Jeuner <small>La solution pour vos repas</small></h1>
+						  <div class=\"panier\">
+							<button type=\"button\" class=\"btn btn-default btn-lg\">
+							  <span class=\"glyphicon glyphicon-shopping-cart\"></span> 
+							  Panier vide
+							</button>
 						</div>
+						</div>
+
+						
 					</header>
 
 					<nav>

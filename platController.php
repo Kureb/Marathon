@@ -9,7 +9,7 @@ class platController extends Controller{
 	}
 
 	public function listAction($t){
-		$res='<div class="row">
+		$res='<div class="row liste_theme">
  		';
   		foreach (modele_plat::findByIdResto($_GET['id']) as $plat) {
   		$res=$res.'

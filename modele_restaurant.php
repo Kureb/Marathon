@@ -171,6 +171,7 @@ return $tab;
 
 }
 
+<<<<<<< HEAD
 public static function findAllImage($id_resto) {
       $c = Base::getConnection();
       $query = $c->prepare("select photo as phot from plats where `id_resto` = ?");
@@ -183,6 +184,20 @@ public static function findAllImage($id_resto) {
       }
       return $tab;
     }
+=======
+public static function nbPlat($restaurant)
+{
+      $c = base::getConnection();
+      $query = $c->prepare('SELECT count(nom) as nbplat FROM plats WHERE id_resto=?');
+      $query->bindParam(1, $restaurant, PDO::PARAM_INT);
+
+      $dbres = $query->execute();
+
+      $d = $query->fetch(PDO::FETCH_BOTH);
+
+      return $d['nbplat'];
+}
+>>>>>>> a5913f1c96d665927d33dbfe2926a576e5fc1c98
 
 
 }
