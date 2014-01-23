@@ -1,6 +1,7 @@
 <?php
 include_once 'controller.php';
 include_once 'modele_theme.php';
+include_once 'modele_restaurant.php';
 class themeController extends Controller{ 
 	public function __construct(){
 		$this->tab = array("list"=>"listAction","detail"=>"detailAction","default"=>"listAction");
@@ -15,7 +16,7 @@ class themeController extends Controller{
       	<div class="caption">
         <h3>'.$theme->__get('nom').'</h3>
         <p>'.$theme->__get('description').'</p>
-        <p><a href="theme.php?theme='.$theme->__get('nom').'" class="btn btn-primary" role="button">Liste des restaurants</a></p>
+        <p><a href="theme.php?a=detail&theme='.$theme->__get('nom').'" class="btn btn-primary" role="button">Liste des restaurants</a></p>
      	 </div>
     	</div>';
   		}
@@ -27,7 +28,7 @@ class themeController extends Controller{
 		$res='<div class="row">
  		<div class="col-sm-6 col-md-4">';
  		$theme = $_GET['theme'];
- 		$nomTheme = theme::findByNom($theme);
+ 		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
   		foreach (modele_restaurant::findByIdtheme($idTheme) as $resto) {
   		$res=$res.'<div class="thumbnail">

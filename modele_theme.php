@@ -110,14 +110,14 @@ class modele_theme {
 		$dbres->bindParam(':nom', $nom);
 		$dbres->execute();
 		$plat = false;
-		$d = $dbres->fetch(PDO::FETCH_OBJ);
+		$d = $dbres->fetch(PDO::FETCH_BOTH);
 		if($d!=false)
 		{
 			$theme =  new modele_theme();
-			$theme->__set("id", $d->id);
-			$theme->__set("nom", $d->nom);
-			$theme->__set("description", $d->description);
-			$theme->__set("photo", $d->photo);
+			$theme->id = $d['id'];
+			$theme->nom = $d['nom'];
+			$theme->description = $d['description'];
+			$theme->photo =  $d['photo'];
 		
 		}
 		return $theme;

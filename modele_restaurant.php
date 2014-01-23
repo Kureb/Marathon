@@ -55,7 +55,7 @@ public function __set($attr_name, $attr_val) {
 public function insert() {
 	
 	$c = base::getConnection();
-	$query = $c prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme,photo) values(:id,:nom,:description,:adresse,:contact,:id_theme,:photo)");
+	$query = $c->prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme,photo) values(:id,:nom,:description,:adresse,:contact,:id_theme,:photo)");
 	$query->bindParam(':id', $this->id,PDO::PARAM_STR);
 	$query->bindParam(':description', $this->description,PDO::PARAM_STR);
 	$query->bindParam(':adresse', $this->adresse,PDO::PARAM_STR);
@@ -123,30 +123,29 @@ public static function findByNom($nom) {
 
 }
 
-public static function findbyIdtheme($id_theme) {
- $query = 'select * from restaurant where id_theme = ?';
- $c = base::getConnection();
- $dbres = $c->prepare($query);
- $dbres->bindParam(':id_theme', $id_theme);
- $dbres->execute();
- $d = $dbres->fetchAll();
- $tab = Array();
- foreach($d as $ligne) {
- 	$restaurant= new modele_restaurant();
- 	$restaurant->__set('id', $ligne['id']);
- 	$restaurant->__set('nom', $ligne['nom']);
- 	$restaurant->__set('description', $ligne['description']);
- 	$restaurant->__set('adresse', $ligne['adresse']);
- 	$restaurant->__set('contact', $ligne['contact']);
- 	$restaurant->__set('id_theme', $ligne['id_theme']);
-      $restaurant->__set('photo', $ligne['photo']);
- 	array_push($tab, $restaurant);
+public static function findByIdtheme($id){
+      $c = Base::getConnection();
+      $query = $c->prepare("select * from restaurant where id_theme=?") ;
+      $query->bindParam(1, $id, PDO::PARAM_STR);
+      $dbres = $query->execute();
+      $d = $query->fetchAll();
+      $tab = array();
+      foreach ($d as $key => $value) {
+      $a = new modele_restaurant();
+      $a->id = $value['id'];
+      $a->nom = $value['nom'];
+      $a->description = $value['description'];
+      $a->adresse = $value['adresse'];
+      $a->contact = $value['contact'];
+      $a->id_theme = $value['id_theme'];
+      $a->photo = $value['photo'];
+      $tab[] = $a;
+      }
+      return $tab;
+    }
 
+ 
 
- }
-return $tab;
-
-}
 
 public static function findAll() {
  $query = 'select * from restaurant ORDER BY nom';
