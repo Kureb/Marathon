@@ -20,10 +20,10 @@
 				<body>
 					<header>
 						<div class=\"page-header\">
-						  <h1>Dé Jeuner <img src=\"images/de.jpg\" style=\"position:absolute;width:100px;height:100px\" /><small>La solution pour vos repas</small></h1>
+						  <h1>Dé Jeuner <small>La solution pour vos repas</small></h1>
 						  <div class=\"panier\">
 							<a role=\"button\" href=\"panier.php?a=panier\" class=\"btn btn-default btn-lg\">
-							  <span class=\"glyphicon glyphicon-shopping-cart\"></span>";
+							  <span class=\"glyphicon glyphicon-shopping-cart\"></span> ";
 							  if(!empty($_SESSION['panier'])){
 							  	$tot=0;
 							  	$totPrix=0;

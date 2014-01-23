@@ -3,6 +3,7 @@ include_once 'controller.php';
 include_once 'modele_theme.php';
 include_once 'modele_restaurant.php';
 include_once 'modele_plat.php';
+session_start();
 class platController extends Controller{ 
 	public function __construct(){
 		$this->tab = array("list"=>"listAction");
