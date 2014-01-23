@@ -56,6 +56,7 @@
 			}
 			$res=$res.'<tr><td><br><strong>Total</strong></br></td><td></td><td></td><td><br><strong>'.$totPrix.' €</strong></br></td></tr></tbody>
 			</table>
+			<p class="valider"><a href="#" class="btn btn-primary" role="button">Valider la commande</a> <a href="#" class="btn btn-default" role="button">Vider le panier</a></p>
 			';
 		}
 		else{
