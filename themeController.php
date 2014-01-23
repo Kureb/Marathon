@@ -4,7 +4,7 @@ include_once 'modele_theme.php';
 include_once 'modele_restaurant.php';
 class themeController extends Controller{ 
 	public function __construct(){
-		$this->tab = array("list"=>"listAction","detail"=>"detailAction","default"=>"listAction");
+		$this->tab = array("list"=>"listAction","detail"=>"detailAction");
 	}
 
 	public function listAction($t){
@@ -14,7 +14,7 @@ class themeController extends Controller{
       
     <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-     	 <img data-src="images/'.$theme->__get('photo').'" alt="'.$theme->__get('photo').'">
+     	 <img src="images/'.$theme->__get('photo').'" alt="'.$theme->__get('photo').'">
       	<div class="caption">
         <h3>'.$theme->__get('nom').'</h3>
         <p>'.$theme->__get('description').'</p>
@@ -37,7 +37,7 @@ class themeController extends Controller{
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-     	 <img data-src="images/'.$resto->__get('photo').'" alt="'.$resto->__get('photo').'">
+     	 <img src="images/'.$resto->__get('photo').'" alt="'.$resto->__get('photo').'">
       	<div class="caption">
         <h3>'.$resto->__get('nom').'</h3>
         <p>'.$resto->__get('description').'</p>
@@ -48,11 +48,6 @@ class themeController extends Controller{
   		}
    		$res=$res.'</div>';
    		vue::affichage($res);
-	}
-
-	public function defaultAction($t){
-		$v=new vue(theme::findByDate());
-		$v->affichage("liste");
 	}
 }
 

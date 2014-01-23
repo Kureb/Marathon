@@ -15,7 +15,7 @@ class platController extends Controller{
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-     	 <img src="images/petites/'.$plat->__get('photo').'" alt="'.$plat->__get('photo').'">
+     	 <img src="images/originales/'.$plat->__get('photo').'" alt="'.$plat->__get('photo').'">
       	<div class="caption">
         <h3>'.$plat->__get('nom').'</h3>
         <p>'.$plat->__get('description').'</p>
