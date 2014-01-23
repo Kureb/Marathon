@@ -14,6 +14,7 @@
 					<link rel=\"stylesheet\" href=\"bootstrap/css/bootstrap.css\" type=\"text/css\"/>
 	 				<link rel=\"stylesheet\" href=\"design.css\" type=\"text/css\" /> 
 	 				<script type=\"text/javascript\" src=\"bootstrap/js/bootstrap-select.js\"></script>
+	 				<link rel=\"icon\" href=\"images/de.jpg\" />
 	 				
 				</head>
 
