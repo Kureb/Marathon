@@ -13,8 +13,12 @@
 
 		public static function add($idplat)
 		{
-
-			$_SESSION['panier'][$idplat] = 1;
+			if(empty($_SESSION['panier'][$idplat])){
+				$_SESSION['panier'][$idplat] = 1;
+			}
+			else{
+				$_SESSION['panier'][$idplat] = $_SESSION['panier'][$idplat]+1;
+			}
 		}
 	}
 
