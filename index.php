@@ -2,5 +2,5 @@
 
 	include 'vue.php';
 	
-	vue::Affichage("");
+	header('Location: theme.php'); 
 ?>
