@@ -35,15 +35,15 @@ class themeController extends Controller{
  		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
   		foreach (modele_restaurant::findByIdtheme($idTheme) as $resto) {
-<<<<<<< HEAD
+
         $listeResto=modele_restaurant::findAllImage($resto->id);
         $nb = rand(0,sizeof($listeResto)-1);
-=======
+
       $idresto = $resto->__get('id');
       $nbplat = modele_restaurant::nbPlat($idresto);
       $pluriel = "";
       if($nbplat>1){ $pluriel = "s"; }
->>>>>>> a5913f1c96d665927d33dbfe2926a576e5fc1c98
+
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
