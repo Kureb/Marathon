@@ -101,12 +101,6 @@ class modele_plat {
 			$plat->setAttr("prix", $d->prix);
 			$plat->setAttr("photo", $d->photo);
 			$plat->setAttr("id_resto", $d->id_resto);
-			$plat->__set("id", $d->id);
-			$plat->__set("nom", $d->nom);
-			$plat->__set("description", $d->description);
-			$plat->__set("prix", $d->prix);
-			$plat->__set("photo", $d->photo);
-			$plat->__set("id_resto", $d->id_resto);
 		}
 		return $plat;
 	}
