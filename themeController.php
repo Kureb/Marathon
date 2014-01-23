@@ -28,12 +28,16 @@ class themeController extends Controller{
 	}
 
 	public function detailAction($t){
-		$res='<div class="row">
+		$res='<div class="row liste_theme">
  		';
  		$theme = $_GET['theme'];
  		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
   		foreach (modele_restaurant::findByIdtheme($idTheme) as $resto) {
+      $idresto = $resto->__get('id');
+      $nbplat = modele_restaurant::nbPlat($idresto);
+      $pluriel = "";
+      if($nbplat>1){ $pluriel = "s"; }
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -41,12 +45,49 @@ class themeController extends Controller{
       	<div class="caption">
         <h3>'.$resto->__get('nom').'</h3>
         <p>'.$resto->__get('description').'</p>
-        <p><a href="plat.php?a=list&theme='.$theme.'&restaurant='.$resto->__get('nom').'&id='.$resto->__get("id"). '" class="btn btn-primary" role="button">Listes des plats</a> <a href="#" class="btn btn-default" role="button">Contact</a><a href="#" class="btn btn-default" role="button">Plan</a></p>
+        <p><a href="plat.php?a=list&theme='.$theme.'&restaurant='.$resto->__get('nom').'&id='.$resto->__get("id"). '" class="btn btn-primary" role="button">'.$nbplat.' plat'.$pluriel.'</a> <button class="btn btn-default" data-toggle="modal" data-target="#contact" >Contact</button> 
+<a href="#" class="btn btn-default" role="button">Plan</a></p>
      	</div>
     	</div>
-      </div>';
+      </div>
+
+
+        <!-- Modal -->
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Contact</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="#">
+                
+                <div class="input-group ">
+                  <span class="input-group-addon ">Sujet</span>
+                    <input type="text" name="sujet" class="form-control " maxlength="150" placeholder="Entrer ici le sujet du message">     
+                  </div>
+                              
+                
+                <br />
+                <textarea class="form-control" name="contenu" rows="10"  placeholder="Entrer ici le contenu du message"></textarea>
+               
+                
+                  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Envoyer</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+';
   		}
-   		$res=$res.'</div>';
+   		$res=$res.'</div>
+
+      <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="bootstrap/js/jquery.js"></script>';
    		vue::affichage($res);
 	}
 }
