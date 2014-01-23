@@ -10,6 +10,12 @@
 				$_SESSION['panier'] = Array();
 			}
 		}
+
+		public static function add($idplat)
+		{
+
+			$_SESSION['panier'][$idplat] = 1;
+		}
 	}
 
 ?>

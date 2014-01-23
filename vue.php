@@ -22,10 +22,10 @@
 						<div class=\"page-header\">
 						  <h1>Dé Jeuner <small>La solution pour vos repas</small></h1>
 						  <div class=\"panier\">
-							<button type=\"button\" class=\"btn btn-default btn-lg\">
+							<a role=\"button\" href=\"panier.php?a=panier\" class=\"btn btn-default btn-lg\">
 							  <span class=\"glyphicon glyphicon-shopping-cart\"></span> 
 							  Panier vide
-							</button>
+							</a>
 						</div>
 						</div>
 
