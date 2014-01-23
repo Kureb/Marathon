@@ -45,7 +45,10 @@
 			</thead>
 			<tbody>';
 			foreach ($_SESSION['panier'] as $plat => $quantite) {
+<<<<<<< HEAD
 				
+=======
+>>>>>>> 079569ca6297a24013fdde22ec93377db39fcf95
 				$platDet=modele_plat::findById($plat);
 				$res=$res.'<tr><td>'.$platDet->__get("nom")
 				.'</td><td>'.$quantite.'</td><td>'
