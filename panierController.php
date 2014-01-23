@@ -8,7 +8,7 @@
 	session_start();
 	class panierController extends Controller{ 
 	public function __construct(){
-		$this->tab = array("addpanier"=>"addPanier","panier"=>"panier");
+		$this->tab = array("addpanier"=>"addPanier","panier"=>"panier","vider"=>"vider");
 	}
 
 	public function addPanier($t)
@@ -56,7 +56,7 @@
 			}
 			$res=$res.'<tr><td><br><strong>Total</strong></br></td><td></td><td></td><td><br><strong>'.$totPrix.' €</strong></br></td></tr></tbody>
 			</table>
-			<p class="valider"><a href="#" class="btn btn-primary" role="button">Valider la commande</a> <a href="#" class="btn btn-default" role="button">Vider le panier</a></p>
+			<p class="valider"><a href="#" class="btn btn-primary" role="button">Valider la commande</a> <a href="panier.php?a=vider" class="btn btn-default" role="button">Vider le panier</a></p>
 			';
 		}
 		else{
@@ -66,6 +66,13 @@
 		}
 		vue::affichage($res);
 	}
+
+	public function vider(){
+		session_destroy();
+		header('Location: panier.php?a=panier');
+	}
+
+
 
 }
 ?>
