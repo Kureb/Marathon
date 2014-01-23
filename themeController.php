@@ -41,7 +41,7 @@ class themeController extends Controller{
     	</div>';
   		}
    		$res=$res.'</div></div>';
-   		return $res;
+   		vue::affichage($res);
 	}
 
 	public function defaultAction($t){
