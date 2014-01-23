@@ -44,16 +44,17 @@
 				</tr>
 			</thead>
 			<tbody>';
+			$totPrix=0;
 			foreach ($_SESSION['panier'] as $plat => $quantite) {
-				
 				$platDet=modele_plat::findById($plat);
+				$totPrix=$totPrix+$platDet->__get('prix')*$quantite;
 				$res=$res.'<tr><td>'.$platDet->__get("nom")
 				.'</td><td>'.$quantite.'</td><td>'
 				.$platDet->__get("prix").'</td><td>'
 				.$platDet->__get("prix")*$quantite
-				.'</td></tr>';
+				.'</td>';
 			}
-			$res=$res.'</tbody>
+			$res=$res.'<tr><td><br><strong>Total</strong></br></td><td></td><td></td><td><br><strong>'.$totPrix.' €</strong></br></td></tr></tbody>
 			</table>
 			';
 		}
