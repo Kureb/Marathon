@@ -63,9 +63,6 @@ class modele_theme {
 
 		return $query->execute();
 	}
-
-
-<<<<<<< HEAD
 	public static function findAll() {
 
      $c = base::getConnection();
@@ -83,26 +80,6 @@ class modele_theme {
       }
       return $tab;
     }
-=======
-	public static function findAll(){
-		$query = "select * from theme ORDER BY nom";
-		$pdo = base::getConnection();
-		$dbres = $pdo->prepare($query);
-		$dbres->execute();
-		$d = $dbres->fetchAll();
-		$tab = Array();
-		foreach($d as $ligne){
-			$theme = new modele_theme();
-			$theme->__set("id", $ligne["id"]);
-			$theme->__set("nom", $ligne["nom"]);
-			$theme->__set("description", $ligne["description"]);
-			$theme->__set("photo", $ligne["photo"]);
-			array_push($tab, $theme);
-		}
-
-		return $tab;
-	}
->>>>>>> 27b863ea8fd86a4c70b4290f114e9f05a3bc24b9
 
 
 
