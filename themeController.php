@@ -3,24 +3,24 @@ include_once 'controller.php';
 include_once 'modele_theme.php';
 class themeController extends Controller{ 
 	public function __construct(){
-		$this->tab = array("list"=>"listAction","detail"=>"detailAction","default"=>"defaultAction");
+		$this->tab = array("list"=>"listAction","detail"=>"detailAction","default"=>"listAction");
 	}
 
 	public function listAction($t){
 		$res='<div class="row">
  		<div class="col-sm-6 col-md-4">';
-  		foreach (modele_theme::findByNom() as $theme) {
+  		foreach (modele_theme::findAll() as $theme) {
   		$res=$res.'<div class="thumbnail">
      	 <img data-src="images/'.$theme->__get('photo').'" alt="'.$theme->__get('photo').'">
       	<div class="caption">
         <h3>'.$theme->__get('nom').'</h3>
         <p>'.$theme->__get('description').'</p>
-        <p><a href="theme.php?theme='.$theme->_get('nom').'" class="btn btn-primary" role="button">Liste des restaurants</a></p>
+        <p><a href="theme.php?theme='.$theme->__get('nom').'" class="btn btn-primary" role="button">Liste des restaurants</a></p>
      	 </div>
     	</div>';
   		}
    		$res=$res.'</div></div>';
-   		return $res;
+   		vue::affichage($res);
 	}
 
 	public function detailAction($t){

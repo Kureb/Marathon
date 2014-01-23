@@ -1,7 +1,7 @@
 <?php 
 
 
-inlude_once 'base.php';
+include_once 'base.php';
 
 class modele_theme {
 
@@ -12,11 +12,10 @@ class modele_theme {
 
 
 	public function __get($attr_name) {
-		if(property_exits(__CLASS__, $attr_name)) {
-			return $this->attr_name;
-		}
-		$emess = __CLASS__ . ": unknow member $attr_name (get)";
-		throw new Exception($emess, 45);
+		
+			return $this->$attr_name;
+		
+		
 	}
 
 
@@ -66,24 +65,23 @@ class modele_theme {
 	}
 
 
-	public static function findAll(){
-		$query = "select * from theme ORDER BY nom";
-		$pdo = base::getConnection();
-		$dbres = $pdo->prepare($query);
-		$dbres->execute();
-		$d = $dbres->fetchAll();
-		$tab = Array();
-		foreach($d as $ligne){
-			$theme = new modele_plat();
-			$theme->setAttr("id", $ligne["id"]);
-			$theme->setAttr("nom", $ligne["nom"]);
-			$theme->setAttr("description", $ligne["description"]);
-			$theme->setAttr("photo", $ligne["photo"]);
-			array_push($tab, $billet);
-		}
+	public static function findAll() {
 
-		return $tab;
-	}
+     $c = base::getConnection();
+      $query = $c->prepare("select * from theme ORDER BY nom");
+      $dbres = $query->execute();
+      $d = $query->fetchAll();
+      $tab = array();
+      foreach ($d as $key => $value) {
+      	$a = new modele_theme();
+      	$a->id = $value['id'];
+      	$a->nom = $value['nom'];
+     	$a->description = $value['description'];
+        $a->photo = $value['photo'];
+     	$tab[] = $a;
+      }
+      return $tab;
+    }
 
 
 
