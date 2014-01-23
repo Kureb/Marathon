@@ -13,7 +13,7 @@ class platController extends Controller{
  		<div class="col-sm-6 col-md-4">';
   		foreach (modele_plat::findByIdResto($_GET['id']) as $plat) {
   		$res=$res.'<div class="thumbnail">
-     	 <img data-src="images/'.$plat->__get('photo').'" alt="'.$plat->__get('photo').'">
+     	 <img data-src="images/petites/'.$plat->__get('photo').'" alt="'.$plat->__get('photo').'">
       	<div class="caption">
         <h3>'.$plat->__get('nom').'</h3>
         <p>'.$plat->__get('description').'</p>
