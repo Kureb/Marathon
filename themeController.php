@@ -36,7 +36,7 @@ class themeController extends Controller{
       	<div class="caption">
         <h3>'.$resto->__get('nom').'</h3>
         <p>'.$resto->__get('description').'</p>
-        <p><a href="plat.php?a=list&theme='.$theme.'&restaurant='.$resto->__get('nom').'" class="btn btn-primary" role="button">Listes des plats</a> <a href="#" class="btn btn-default" role="button">Contact</a><a href="#" class="btn btn-default" role="button">Plan</a></p>
+        <p><a href="plat.php?a=list&theme='.$theme.'&restaurant='.$resto->__get('nom').'&id='.$resto->__get("id"). '" class="btn btn-primary" role="button">Listes des plats</a> <a href="#" class="btn btn-default" role="button">Contact</a><a href="#" class="btn btn-default" role="button">Plan</a></p>
      	</div>
     	</div>';
   		}

@@ -25,9 +25,9 @@ class modele_plat {
 
 
 	public function __get($attr_name) {
-		if(property_exits(__CLASS__, $attr_name)) {
-			return $this->attr_name;
-		}
+		
+			return $this->$attr_name;
+		
 		$emess = __CLASS__ . ": unknow member $attr_name (get)";
 		throw new Exception($emess, 45);
 	}
@@ -43,6 +43,19 @@ class modele_plat {
 		throw new Exception($emess, 45);
 	}
 
+
+
+
+	public function getAttr($attr_name) {
+		return $this->attr_name;
+	}
+
+
+
+
+	public function setAttr($attr_name, $attr_val) {
+		$this->$attr_name = $attr_val;
+	}
 
 	public static function insert(){
 		$nb = 0;
@@ -169,16 +182,14 @@ class modele_plat {
 			$plat->setAttr("prix", $ligne["prix"]);
 			$plat->setAttr("photo", $ligne["photo"]);
 			$plat->setAttr("id_resto", $ligne["id_resto"]);
-			array_push($tab, $billet);
+			array_push($tab, $plat);
 		}
 
 		return $tab;
 	}
 
-
-
 	public static function findByIdResto($id_resto) {
-		$query = 'select * from plats where id_resto = :id_resto';
+		$query = 'select * from plats where id_resto = :id_resto ORDER BY nom';
 		$c = base::getConnection();
 		$dbres = $c->prepare($query);
 		$dbres->bindParam(':id_resto', $id_resto);
