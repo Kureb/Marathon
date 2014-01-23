@@ -1,7 +1,7 @@
 <?php 
 
 
-inlude_once 'base.php';
+include_once 'base.php';
 
 class modele_theme {
 
@@ -102,6 +102,27 @@ class modele_theme {
 			$theme->setAttr("nom", $d->nom);
 			$theme->setAttr("description", $d->description);
 			$theme->setAttr("photo", $d->photo);
+		}
+		return $theme;
+	}
+
+
+	public static function findByNom($nom) {
+		$c = base::getConnection();
+		$query = 'select * from theme where nom= :nom';
+		$dbres = $c->prepare($query);
+		$dbres->bindParam(':nom', $nom);
+		$dbres->execute();
+		$plat = false;
+		$d = $dbres->fetch(PDO::FETCH_OBJ);
+		if($d!=false)
+		{
+			$theme =  new modele_theme();
+			$theme->setAttr("id", $d->id);
+			$theme->setAttr("nom", $d->nom);
+			$theme->setAttr("description", $d->description);
+			$theme->setAttr("photo", $d->photo);
+		
 		}
 		return $theme;
 	}
