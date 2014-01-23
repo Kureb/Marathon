@@ -23,9 +23,21 @@
 						  <h1>Dé Jeuner <img src=\"images/de.jpg\" style=\"position:absolute;width:100px;height:100px\" /><small>La solution pour vos repas</small></h1>
 						  <div class=\"panier\">
 							<a role=\"button\" href=\"panier.php?a=panier\" class=\"btn btn-default btn-lg\">
-							  <span class=\"glyphicon glyphicon-shopping-cart\"></span> 
-							  Panier vide
-							</a>
+							  <span class=\"glyphicon glyphicon-shopping-cart\"></span>";
+							  if(!empty($_SESSION['panier'])){
+							  	$tot=0;
+							  	$totPrix=0;
+							  	foreach ($_SESSION['panier'] as $key => $value) {
+							  		$platDet=modele_plat::findById($key);
+							  		$tot=$tot+1*$value;
+							  		$totPrix=$totPrix+$platDet->__get('prix')*$value;
+							  	}
+							  	$contenu=$contenu.$tot." Articles ".$totPrix." €";
+							  }
+							  else{
+							  	$contenu=$contenu.'Panier Vide';
+							  }
+							$contenu=$contenu."</a>
 						</div>
 						</div>
 
