@@ -35,8 +35,8 @@ class themeController extends Controller{
 	}
 
 	public function detailAction($t){
-		$res='<div class="row liste_theme">
- 		';
+		$res='<div class="row liste_theme">';
+    $carte  = '';
  		$theme = $_GET['theme'];
  		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
@@ -44,6 +44,9 @@ class themeController extends Controller{
 
         $listeResto=modele_restaurant::findAllImage($resto->id);
         $nb = rand(0,sizeof($listeResto)-1);
+        
+        $carte  = $resto->__get('map');
+        
 
       $idresto = $resto->__get('id');
       $nbplat = modele_restaurant::nbPlat($idresto);
@@ -109,16 +112,11 @@ class themeController extends Controller{
         <h4 class="modal-title" id="myModalLabel">Carte</h4>
       </div>
       <div class="modal-body">
-        
+              '.($carte).'
               
-              Insérer la carte ici.  
-                
-                
-                  
-      </div>
+              </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Ouvrir en grand</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

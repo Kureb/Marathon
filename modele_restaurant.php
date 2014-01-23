@@ -21,6 +21,8 @@ private $id_theme;
 
 private $photo;
 
+private $map;
+
 
 public function __construct(){}
 
@@ -55,13 +57,13 @@ public function __set($attr_name, $attr_val) {
 public function insert() {
 	
 	$c = base::getConnection();
-	$query = $c->prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme,photo) values(:id,:nom,:description,:adresse,:contact,:id_theme,:photo)");
+	$query = $c->prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme,photo,map) values(:id,:nom,:description,:adresse,:contact,:id_theme,:photo,:map)");
 	$query->bindParam(':id', $this->id,PDO::PARAM_STR);
 	$query->bindParam(':description', $this->description,PDO::PARAM_STR);
 	$query->bindParam(':adresse', $this->adresse,PDO::PARAM_STR);
 	$query->bindParam(':contact', $this->contact,PDO::PARAM_STR);
 	$query->bindParam(':id_theme', $this->id_theme, PDO::PARAM_STR);
-      $query->bindParam(':photo', $this->photo, PDO::PARAM_STR);
+      $query->bindParam(':map', $this->map, PDO::PARAM_STR);
 	$query->execute();
 	$this->id = $c->LastInsertID('restaurant');
 
@@ -82,9 +84,11 @@ public static function findById($id) {
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
-      $a->id_theme = $d['photo'];
+      $a->map = $d['map'];
+
       return $a;
     }
+
 public static function findByAdresse($adresse){
 
 	 $c = base::getConnection();
@@ -99,7 +103,7 @@ public static function findByAdresse($adresse){
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
-      $a->photo = $d['photo'];
+      $a->map = $d['map'];
       return $a;
 
 }
@@ -117,7 +121,7 @@ public static function findByNom($nom) {
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
-      $a->photo = $d['photo'];
+      $a->map = $d['map'];
       return $a;
 
 
@@ -138,7 +142,7 @@ public static function findByIdtheme($id){
       $a->adresse = $value['adresse'];
       $a->contact = $value['contact'];
       $a->id_theme = $value['id_theme'];
-      $a->photo = $value['photo'];
+      $a->map = $value['map'];
       $tab[] = $a;
       }
       return $tab;
@@ -162,7 +166,7 @@ public static function findAll() {
  	$restaurant->__set('adresse', $ligne['adresse']);
  	$restaurant->__set('contact', $ligne['contact']);
  	$restaurant->__set('id_theme', $ligne['id_theme']);
-      $restaurant->__set('photo', $ligne['photo']);
+      $restaurant->__set('map', $ligne['map']);
  	array_push($tab, $restaurant);
 
 
@@ -196,6 +200,16 @@ public static function nbPlat($restaurant)
       $d = $query->fetch(PDO::FETCH_BOTH);
 
       return $d['nbplat'];
+}
+
+
+public static function donneCarte($id) {
+      $c = base::getConnection();
+      $query = $c->prepare('select map from restaurant where id=?');
+      $query->bindParam(1, $id, PDO::PARAM_INT);
+      $dbres = $query->execute();
+      $d = $query->fetch(PDO::FETCH_BOTH);
+      return $d;
 }
 
 

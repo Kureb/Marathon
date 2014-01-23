@@ -1,6 +1,6 @@
 <?php
 
-	$base = 'daussy2u';
+	$base = 'Marathon';
 	$pass = 'root';
 	$user = 'root';
 	$host = 'localhost';
