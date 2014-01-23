@@ -10,9 +10,11 @@ class platController extends Controller{
 
 	public function listAction($t){
 		$res='<div class="row">
- 		<div class="col-sm-6 col-md-4">';
+ 		';
   		foreach (modele_plat::findByIdResto($_GET['id']) as $plat) {
-  		$res=$res.'<div class="thumbnail">
+  		$res=$res.'
+      <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
      	 <img data-src="images/petites/'.$plat->__get('photo').'" alt="'.$plat->__get('photo').'">
       	<div class="caption">
         <h3>'.$plat->__get('nom').'</h3>
@@ -20,9 +22,9 @@ class platController extends Controller{
         <p>'.$plat->__get('prix').'</p>
         <p><a href="#" class="btn btn-primary" role="button">Ajouter au panier</a></p>
      	 </div>
-    	</div>';
+    	</div></div>';
   		}
-   		$res=$res.'</div></div>';
+   		$res=$res.'</div>';
    		vue::affichage($res);
 	}
 }

@@ -33,14 +33,16 @@
 					  	$theme = $_GET['theme'];
 					  	$a = $_GET['a'];
 					  	$contenu = $contenu."
-							<li><a href=\"theme.php?a=$a&theme=$theme\">$theme</a></li>
+							<li><a href=\"theme.php?a=detail&theme=$theme\">$theme</a></li>
 					  	";
 					  }
 					  if(isset($_GET['restaurant'])){
 					  	$restaurant = $_GET['restaurant'];
 					  	$a = $_GET['a'];
+					  	$theme = $_GET['theme'];
+					  	$id = $_GET['id'];
 					  	$contenu = $contenu."
-							<li><a href=\"restaurant.php?a=$a&restaurant=$restaurant\">$restaurant</a></li>
+							<li><a href=\"plat.php?a=$a&theme=$theme&restaurant=$restaurant&id=$id\">$restaurant</a></li>
 					  	";
 					  }
 					  
