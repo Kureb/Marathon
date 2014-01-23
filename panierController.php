@@ -8,7 +8,7 @@
 	session_start();
 	class panierController extends Controller{ 
 	public function __construct(){
-		$this->tab = array("addpanier"=>"addPanier","panier"=>"panier","vider"=>"vider");
+		$this->tab = array("addpanier"=>"addPanier","panier"=>"panier","vider"=>"vider","valider"=>"valider");
 	}
 
 	public function addPanier($t)
@@ -70,6 +70,10 @@
 	public function vider(){
 		session_destroy();
 		header('Location: panier.php?a=panier');
+	}
+
+	public function valider(){
+		
 	}
 
 
