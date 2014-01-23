@@ -177,7 +177,7 @@ class modele_plat {
 
 
 
-	public static function findByPrix($id_resto) {
+	public static function findByIdResto($id_resto) {
 		$query = 'select * from plats where id_resto = :id_resto';
 		$c = base::getConnection();
 		$dbres = $c->prepare($query);
