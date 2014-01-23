@@ -124,12 +124,12 @@ public static function findbyIdtheme($id_theme) {
  $tab = Array();
  foreach($d as $ligne) {
  	$restaurant= new modele_restaurant();
- 	$restaurant->setAttr('id', $ligne['id']);
- 	$restaurant->setAttr('nom', $ligne['nom']);
- 	$restaurant->setAttr('description', $ligne['description']);
- 	$restaurant->setAttr('adresse', $ligne['adresse']);
- 	$restaurant->setAttr('contact', $ligne['contact']);
- 	$restaurant->setAttr('id_theme', $ligne['id_theme']);
+ 	$restaurant->__set('id', $ligne['id']);
+ 	$restaurant->__set('nom', $ligne['nom']);
+ 	$restaurant->__set('description', $ligne['description']);
+ 	$restaurant->__set('adresse', $ligne['adresse']);
+ 	$restaurant->__set('contact', $ligne['contact']);
+ 	$restaurant->__set('id_theme', $ligne['id_theme']);
  	array_push($tab, $restaurant);
 
 

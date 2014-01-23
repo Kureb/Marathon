@@ -44,8 +44,6 @@ class modele_plat {
 	}
 
 
-	//THEME, findBynom par ordre alphabetiqye
-	//Ajouter pour images colonnes 'photo'
 	public static function insert(){
 		$nb = 0;
 		$query = "INSERT INTO plats VALUES(null,'".$this->nom."', '".$this->description."', '".$this->prix."', '".$this->photo."', '".$this->id_resto."')";
@@ -119,12 +117,12 @@ class modele_plat {
 		if($d!=false)
 		{
 			$plat =  new modele_plat();
-			$plat->setAttr("id", $d->id);
-			$plat->setAttr("nom", $d->nom);
-			$plat->setAttr("description", $d->description);
-			$plat->setAttr("prix", $d->prix);
-			$plat->setAttr("photo", $d->photo);
-			$plat->setAttr("id_resto", $d->id_resto);
+			$plat->__set("id", $d->id);
+			$plat->__set("nom", $d->nom);
+			$plat->__set("description", $d->description);
+			$plat->__set("prix", $d->prix);
+			$plat->__set("photo", $d->photo);
+			$plat->__set("id_resto", $d->id_resto);
 		}
 		return $plat;
 	}

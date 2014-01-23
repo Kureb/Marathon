@@ -74,7 +74,7 @@ class modele_theme {
 		$d = $dbres->fetchAll();
 		$tab = Array();
 		foreach($d as $ligne){
-			$theme = new modele_plat();
+			$theme = new modele_theme();
 			$theme->setAttr("id", $ligne["id"]);
 			$theme->setAttr("nom", $ligne["nom"]);
 			$theme->setAttr("description", $ligne["description"]);
