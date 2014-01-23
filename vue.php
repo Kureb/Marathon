@@ -75,6 +75,12 @@
 					<div>
 					$page
 					</div>
+
+					<footer>
+						Copyright Dé Jeuner - 2014
+						<br />
+						Lucas GEHIN - Michel NUSSBAUM - Alexandre DAUSSY - Pierre LERICHE
+					</footer>
 				</body>
 			</html>
  			";

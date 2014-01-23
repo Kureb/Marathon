@@ -19,8 +19,11 @@
 			if(empty($plat)){
 				die("Le produit selectionne n'existe pas");
 			}
+			$theme = $_GET['theme'];
+			$restaurant = $_GET['restaurant'];
+			$id_restau = $_GET['id_restau'];
 			modele_panier::add($idplat);
-			header('Location: panier.php?a=panier'); 
+			header('Location: plat.php?a=list&theme='.$theme.'&restaurant='.$restaurant.'&id='.$id_restau.''); 
 		}
 		else{
 			die("Erreur");

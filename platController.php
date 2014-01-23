@@ -13,6 +13,9 @@ class platController extends Controller{
 		$res='<div class="row liste_theme">
  		';
   		foreach (modele_plat::findByIdResto($_GET['id']) as $plat) {
+        $theme = $_GET['theme'];
+        $restaurant = $_GET['restaurant'];
+        $id_restau = $_GET['id'];
         $idplat = $plat->__get('id');
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
@@ -22,7 +25,7 @@ class platController extends Controller{
         <h3>'.$plat->__get('nom').'</h3>
         <p>'.$plat->__get('description').'</p>
         <p><span class="label label-info prix">'.$plat->__get('prix').' €</span></p>
-        <p><a href="panier.php?a=addpanier&id='.$idplat.'" class="btn btn-primary" role="button">Ajouter au panier</a></p>
+        <p><a href="panier.php?a=addpanier&id='.$idplat.'&theme='.$theme.'&restaurant='.$restaurant.'&id_restau='.$id_restau.'" class="btn btn-primary" role="button">Ajouter au panier</a></p>
      	 </div>
     	</div></div>';
   		}
