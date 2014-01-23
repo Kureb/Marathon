@@ -19,7 +19,7 @@ class platController extends Controller{
       	<div class="caption">
         <h3>'.$plat->__get('nom').'</h3>
         <p>'.$plat->__get('description').'</p>
-        <p>'.$plat->__get('prix').'</p>
+        <p><span class="label label-info prix">'.$plat->__get('prix').' €</span></p>
         <p><a href="#" class="btn btn-primary" role="button">Ajouter au panier</a></p>
      	 </div>
     	</div></div>';
