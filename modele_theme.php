@@ -97,7 +97,7 @@ class modele_theme {
 		$d = $dbres->fetch(PDO::FETCH_OBJ);
 		if($d!=false)
 		{
-			$theme =  new modele_plat();
+			$theme =  new modele_theme();
 			$theme->setAttr("id", $d->id);
 			$theme->setAttr("nom", $d->nom);
 			$theme->setAttr("description", $d->description);
