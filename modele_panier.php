@@ -7,7 +7,7 @@
 				session_start();
 			}
 			if(!isset($_SESSION['panier'])){
-				$_SESSION['panier'] = Array();
+				$_SESSION['panier'] = array();
 			}
 		}
 
