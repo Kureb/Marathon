@@ -3,6 +3,10 @@ body {
 	min-width: 1000px;
 }
 
+#corps {
+	min-height: 400px;
+}
+
 .liste_theme {
 	
 	width: 95%;

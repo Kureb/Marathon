@@ -72,7 +72,7 @@
 					</ol>
 					</nav>
 
-					<div>
+					<div id=\"corps\">
 					$page
 					</div>
 
