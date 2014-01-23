@@ -97,19 +97,11 @@ class modele_theme {
 		$d = $dbres->fetch(PDO::FETCH_OBJ);
 		if($d!=false)
 		{
-<<<<<<< HEAD
 			$theme =  new modele_plat();
 			$theme->__set("id", $d->id);
 			$theme->__set("nom", $d->nom);
 			$theme->__set("description", $d->description);
-			$theme->__set("photo", $d->photo);
-=======
-			$theme =  new modele_theme();
-			$theme->setAttr("id", $d->id);
-			$theme->setAttr("nom", $d->nom);
-			$theme->setAttr("description", $d->description);
-			$theme->setAttr("photo", $d->photo);
->>>>>>> ab70ba81d4f23437ff70c4e6e4d32b9d1a6be933
+
 		}
 		return $theme;
 	}
