@@ -10,11 +10,12 @@ class themeController extends Controller{
 	public function listAction($t){
 		$res='<div class="row liste_theme">';
   		foreach (modele_theme::findAll() as $theme) {
+        $liste=modele_theme::findAllImage($theme->id);
+        $nb = rand(0,sizeof($liste)-1);
   		$res=$res.'
-      
-    <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-     	 <img src="images/'.$theme->__get('photo').'" alt="'.$theme->__get('photo').'">
+      <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+     	 <img src="images/originales/'.$liste[$nb].'">
       	<div class="caption">
         <h3>'.$theme->__get('nom').'</h3>
         <p>'.$theme->__get('description').'</p>
@@ -34,10 +35,12 @@ class themeController extends Controller{
  		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
   		foreach (modele_restaurant::findByIdtheme($idTheme) as $resto) {
+        $listeResto=modele_restaurant::findAllImage($resto->id);
+        $nb = rand(0,sizeof($listeResto)-1);
   		$res=$res.'
       <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-     	 <img src="images/'.$resto->__get('photo').'" alt="'.$resto->__get('photo').'">
+     	 <img src="images/originales/'.$listeResto[$nb].'">
       	<div class="caption">
         <h3>'.$resto->__get('nom').'</h3>
         <p>'.$resto->__get('description').'</p>

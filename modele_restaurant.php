@@ -171,5 +171,18 @@ return $tab;
 
 }
 
+public static function findAllImage($id_resto) {
+      $c = Base::getConnection();
+      $query = $c->prepare("select photo as phot from plats where `id_resto` = ?");
+      $query->bindParam(1, $id_resto, PDO::PARAM_STR);
+      $dbres = $query->execute();
+      
+      $tab = array();
+      while($d = $query->fetch(PDO::FETCH_BOTH)){
+            $tab[] = $d['phot'];
+      }
+      return $tab;
+    }
+
 
 }

@@ -124,15 +124,20 @@ class modele_theme {
 	}
 
 
+	public static function findAllImage($id_theme) {
+	$c = Base::getConnection();
+      $query = $c->prepare("select plats.photo as phot from plats INNER JOIN `restaurant` on `plats`.id_resto = `restaurant`.id where `id_theme` = ?");
+      $query->bindParam(1, $id_theme, PDO::PARAM_STR);
+      $dbres = $query->execute();
+      
+      $tab = array();
+      while($d = $query->fetch(PDO::FETCH_BOTH)){
+      	$tab[] = $d['phot'];
+      }
+      return $tab;
+    }
+
 	
-	
-
-
-
-
-
-
-
 }
 
 ?>
