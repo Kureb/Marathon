@@ -1,5 +1,5 @@
 <?php
-
+	include_once 'modele_panier.php';
 	include_once 'vue.php';
 	include_once 'platController.php';
 
