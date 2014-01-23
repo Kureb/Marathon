@@ -9,7 +9,6 @@ class themeController extends Controller{
 
 	public function listAction($t){
 		$res='<div class="row">
- 		<div class="col-sm-6 col-md-4">';
   		foreach (modele_theme::findAll() as $theme) {
   		$res=$res.'<div class="thumbnail">
      	 <img data-src="images/'.$theme->__get('photo').'" alt="'.$theme->__get('photo').'">
@@ -26,7 +25,6 @@ class themeController extends Controller{
 
 	public function detailAction($t){
 		$res='<div class="row">
- 		<div class="col-sm-6 col-md-4">';
  		$theme = $_GET['theme'];
  		$nomTheme = modele_theme::findByNom($theme);
  		$idTheme = $nomTheme->__get('id');
