@@ -3,3 +3,9 @@
 	width: 95%;
 	margin:auto;
 }
+
+.thumbnail
+{
+	height: 300px;
+	overflow: auto;
+}
