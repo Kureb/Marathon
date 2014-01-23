@@ -76,7 +76,7 @@
 	}
 
 	public function valider(){
-		$res='<form method="post" action="#">
+		$res='<form method="post" action="panier.php?a=vider">
                 
                 <div class="input-group " style="width:50%;margin:auto;">
                   <span class="input-group-addon ">Nom</span>
@@ -90,7 +90,15 @@
                   <span class="input-group-addon ">Adresse</span>
                     <input type="text" name="adresse" class="form-control"  maxlength="150" placeholder="Entrer ici votre adresse">     
                   </div>
+				<p style="text-align:center">
+                  <img src="images/cb.jpeg" alt="CB" style="width:200px;height:100px;"/>
+                  <img src="images/paypal.jpg" alt="Paypal" />
+                  <br />
+                  
+                  <button type="submit" class="btn btn-primary">Valider</button>
+                 </p>
                   </form>';
+
                   vue::affichage($res);
 	}
 
