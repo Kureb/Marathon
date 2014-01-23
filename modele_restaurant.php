@@ -4,6 +4,9 @@ include_once 'base.php';
 
 class modele_restaurant{
 
+// ALTER TABLE `restaurant`
+// ADD COLUMN `photo` VARCHAR(256);
+
 private $id;
 
 private $nom;
@@ -15,6 +18,8 @@ private $adresse;
 private $contact;
 
 private $id_theme;
+
+private $photo;
 
 
 public function __construct(){}
@@ -50,12 +55,13 @@ public function __set($attr_name, $attr_val) {
 public function insert() {
 	
 	$c = base::getConnection();
-	$query = $c prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme) values(:id,:nom,:description,:adresse,:contact,:id_theme)");
+	$query = $c prepare("insert into restaurant(id,nom,description,adresse,contact,id_theme,photo) values(:id,:nom,:description,:adresse,:contact,:id_theme,:photo)");
 	$query->bindParam(':id', $this->id,PDO::PARAM_STR);
 	$query->bindParam(':description', $this->description,PDO::PARAM_STR);
 	$query->bindParam(':adresse', $this->adresse,PDO::PARAM_STR);
 	$query->bindParam(':contact', $this->contact,PDO::PARAM_STR);
 	$query->bindParam(':id_theme', $this->id_theme, PDO::PARAM_STR);
+      $query->bindParam(':photo', $this->photo, PDO::PARAM_STR);
 	$query->execute();
 	$this->id = $c->LastInsertID('restaurant');
 
@@ -76,6 +82,7 @@ public static function findById($id) {
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
+      $a->id_theme = $d['photo'];
       return $a;
     }
 public static function findByAdresse($adresse){
@@ -92,6 +99,7 @@ public static function findByAdresse($adresse){
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
+      $a->photo = $d['photo'];
       return $a;
 
 }
@@ -109,6 +117,7 @@ public static function findByNom($nom) {
       $a->adresse = $d['adresse'];
       $a->contact = $d['contact'];
       $a->id_theme =$d['id_theme'];
+      $a->photo = $d['photo'];
       return $a;
 
 
@@ -124,12 +133,13 @@ public static function findbyIdtheme($id_theme) {
  $tab = Array();
  foreach($d as $ligne) {
  	$restaurant= new modele_restaurant();
- 	$restaurant->setAttr('id', $ligne['id']);
- 	$restaurant->setAttr('nom', $ligne['nom']);
- 	$restaurant->setAttr('description', $ligne['description']);
- 	$restaurant->setAttr('adresse', $ligne['adresse']);
- 	$restaurant->setAttr('contact', $ligne['contact']);
- 	$restaurant->setAttr('id_theme', $ligne['id_theme']);
+ 	$restaurant->__set('id', $ligne['id']);
+ 	$restaurant->__set('nom', $ligne['nom']);
+ 	$restaurant->__set('description', $ligne['description']);
+ 	$restaurant->__set('adresse', $ligne['adresse']);
+ 	$restaurant->__set('contact', $ligne['contact']);
+ 	$restaurant->__set('id_theme', $ligne['id_theme']);
+      $restaurant->__set('photo', $ligne['photo']);
  	array_push($tab, $restaurant);
 
 
@@ -147,12 +157,13 @@ public static function findAll() {
  $tab = Array();
  foreach($d as $ligne) {
  	$restaurant= new modele_restaurant();
- 	$restaurant->setAttr('id', $ligne['id']);
- 	$restaurant->setAttr('nom', $ligne['nom']);
- 	$restaurant->setAttr('description', $ligne['description']);
- 	$restaurant->setAttr('adresse', $ligne['adresse']);
- 	$restaurant->setAttr('contact', $ligne['contact']);
- 	$restaurant->setAttr('id_theme', $ligne['id_theme']);
+ 	$restaurant->__set('id', $ligne['id']);
+ 	$restaurant->__set('nom', $ligne['nom']);
+ 	$restaurant->__set('description', $ligne['description']);
+ 	$restaurant->__set('adresse', $ligne['adresse']);
+ 	$restaurant->__set('contact', $ligne['contact']);
+ 	$restaurant->__set('id_theme', $ligne['id_theme']);
+      $restaurant->__set('photo', $ligne['photo']);
  	array_push($tab, $restaurant);
 
 

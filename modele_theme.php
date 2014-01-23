@@ -35,7 +35,7 @@ class modele_theme {
 		$query = "INSERT INTO theme VALUES(null,'".$this->nom."', '".$this->description."', '".$this->photo."')";
 		$c = base::getConnection();
 		$nb = $c->exec($query);
-		$this->setAttr("id", $c->LastInsertId());
+		$this->__set("id", $c->LastInsertId());
 		return $nb;
 	}
 
@@ -65,6 +65,7 @@ class modele_theme {
 	}
 
 
+<<<<<<< HEAD
 	public static function findAll() {
 
      $c = base::getConnection();
@@ -82,6 +83,26 @@ class modele_theme {
       }
       return $tab;
     }
+=======
+	public static function findAll(){
+		$query = "select * from theme ORDER BY nom";
+		$pdo = base::getConnection();
+		$dbres = $pdo->prepare($query);
+		$dbres->execute();
+		$d = $dbres->fetchAll();
+		$tab = Array();
+		foreach($d as $ligne){
+			$theme = new modele_theme();
+			$theme->__set("id", $ligne["id"]);
+			$theme->__set("nom", $ligne["nom"]);
+			$theme->__set("description", $ligne["description"]);
+			$theme->__set("photo", $ligne["photo"]);
+			array_push($tab, $theme);
+		}
+
+		return $tab;
+	}
+>>>>>>> 27b863ea8fd86a4c70b4290f114e9f05a3bc24b9
 
 
 
@@ -96,10 +117,31 @@ class modele_theme {
 		if($d!=false)
 		{
 			$theme =  new modele_plat();
-			$theme->setAttr("id", $d->id);
-			$theme->setAttr("nom", $d->nom);
-			$theme->setAttr("description", $d->description);
-			$theme->setAttr("photo", $d->photo);
+			$theme->__set("id", $d->id);
+			$theme->__set("nom", $d->nom);
+			$theme->__set("description", $d->description);
+
+		}
+		return $theme;
+	}
+
+
+	public static function findByNom($nom) {
+		$c = base::getConnection();
+		$query = 'select * from theme where nom= :nom';
+		$dbres = $c->prepare($query);
+		$dbres->bindParam(':nom', $nom);
+		$dbres->execute();
+		$plat = false;
+		$d = $dbres->fetch(PDO::FETCH_OBJ);
+		if($d!=false)
+		{
+			$theme =  new modele_theme();
+			$theme->__set("id", $d->id);
+			$theme->__set("nom", $d->nom);
+			$theme->__set("description", $d->description);
+			$theme->__set("photo", $d->photo);
+		
 		}
 		return $theme;
 	}
