@@ -59,7 +59,7 @@
 			}
 			$res=$res.'<tr><td><br><strong>Total</strong></br></td><td></td><td></td><td><br><strong>'.$totPrix.' €</strong></br></td></tr></tbody>
 			</table>
-			<p class="valider"><a href="#" class="btn btn-primary" role="button">Valider la commande</a> <a href="panier.php?a=vider" class="btn btn-default" role="button">Vider le panier</a></p>
+			<p class="valider"><a href="panier.php?a=valider" class="btn btn-primary" role="button">Valider la commande</a> <a href="panier.php?a=vider" class="btn btn-default" role="button">Vider le panier</a></p>
 			';
 		}
 		else{
@@ -76,7 +76,22 @@
 	}
 
 	public function valider(){
-		
+		$res='<form method="post" action="#">
+                
+                <div class="input-group " style="width:50%;margin:auto;">
+                  <span class="input-group-addon ">Nom</span>
+                    <input type="text" name="nom" class="form-control"  maxlength="150" placeholder="Entrer ici votre nom">     
+                  </div><br>
+                  <select name="mode" class="form-control" style="width:50%;margin:auto;">
+                  <option value="domicile">A domicile</option>
+                  <option value="pointdevente">Dans un point de vente</option>
+                  </select><br>
+                  <div class="input-group " style="width:50%;margin:auto;">
+                  <span class="input-group-addon ">Adresse</span>
+                    <input type="text" name="adresse" class="form-control"  maxlength="150" placeholder="Entrer ici votre adresse">     
+                  </div>
+                  </form>';
+                  vue::affichage($res);
 	}
 
 
