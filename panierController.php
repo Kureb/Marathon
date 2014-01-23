@@ -5,7 +5,7 @@
 	include_once 'modele_restaurant.php';
 	include_once 'modele_plat.php';
 	include_once 'modele_panier.php';
-
+	session_start();
 	class panierController extends Controller{ 
 	public function __construct(){
 		$this->tab = array("addpanier"=>"addPanier","panier"=>"panier");
@@ -34,18 +34,26 @@
 		
 		if(!empty($_SESSION)){
 			$res = $res.'
-			<table class="table table-striped" style="width:90%;margin=auto;">
+			<table class="table table-striped" style="width:100%;margin=auto;">
 			<thead>
 				<tr>
 					<th>Produit</th>
 					<th>Quantité</th>
 					<th>Prix Unité</th>
-					<th>Prix Total</td>
+					<th>Prix Total</th>
 				</tr>
 			</thead>
-			<tbody>
-
-			</tbody>
+			<tbody>';
+			foreach ($_SESSION['panier'] as $plat => $quantite) {
+				
+				$platDet=modele_plat::findById($plat);
+				$res=$res.'<tr><td>'.$platDet->__get("nom")
+				.'</td><td>'.$quantite.'</td><td>'
+				.$platDet->__get("prix").'</td><td>'
+				.$platDet->__get("prix")*$quantite
+				.'</td></tr>';
+			}
+			$res=$res.'</tbody>
 			</table>
 			';
 		}
