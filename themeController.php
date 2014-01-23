@@ -56,13 +56,13 @@ class themeController extends Controller{
         <h3>'.$resto->__get('nom').'</h3>
         <p>'.$resto->__get('description').'</p>
         <p><a href="plat.php?a=list&theme='.$theme.'&restaurant='.$resto->__get('nom').'&id='.$resto->__get("id"). '" class="btn btn-primary" role="button">'.$nbplat.' plat'.$pluriel.'</a> <button class="btn btn-default" data-toggle="modal" data-target="#contact" >Contact</button> 
-<a href="#" class="btn btn-default" role="button">Plan</a></p>
-     	</div>
+<button class="btn btn-default" data-toggle="modal" data-target="#plan" >Plan</button> 
+      </div>
     	</div>
       </div>
 
 
-        <!-- Modal -->
+        <!-- Modal Contact -->
 <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -88,6 +88,35 @@ class themeController extends Controller{
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Envoyer</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+<!-- Modal Carte -->
+<div class="modal fade" id="plan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Carte</h4>
+      </div>
+      <div class="modal-body">
+        
+              
+              Insérer la carte ici.  
+                
+                
+                  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ouvrir en grand</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
